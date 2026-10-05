@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "agent-notify-self",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  // Only delivers to addresses verified in Email Routing, so a leaked token can't spam strangers.
+  "send_email": [{ "name": "EMAIL" }],
+  // Holds the generated access token. Created automatically on deploy.
+  "kv_namespaces": [{ "binding": "KV","id": "cad01fab3c26439997d5cc181b458341" }],
+  "vars": {
+    "TO_ADDRESS": "Cyris@sudolabs.nz",
+    "FROM_ADDRESS": "notify@sudolabs.nz"
+  }
+}
